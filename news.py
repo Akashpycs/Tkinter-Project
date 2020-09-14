@@ -40,11 +40,22 @@ class TechNews:
 
         return article
 
-    @property
+    #to check if it can connect to url or not 
     def agent(self):
         con_obj = self.connect()
         if con_obj != None: self.fetch(con_obj)
         else: return None
-
-
-# p ; { * " : _ [ P/ ' ?
+        
+    def deliver(self):
+        ready = self.agent()
+        if ready == None: return None
+        else return self.stuff
+    
+if __name__ == "__main__":
+    tn = TechNews()
+    news = tn.deliver()
+    #news contains many dict objects
+    
+    for i in news:
+        print(i)
+    
