@@ -43,19 +43,23 @@ class TechNews:
     #to check if it can connect to url or not 
     def agent(self):
         con_obj = self.connect()
-        if con_obj != None: self.fetch(con_obj)
+        if con_obj.status_code == 200: 
+            self.fetch(con_obj)
+            return True
         else: return None
         
     def deliver(self):
         ready = self.agent()
-        if ready == None: return None
-        else return self.stuff
+        if ready: return self.stuff
+        else: return None
     
 if __name__ == "__main__":
     tn = TechNews()
-    news = tn.deliver()
-    #news contains many dict objects
+    news = tn.deliver() #news contains many dict objects
     
     for i in news:
-        print(i)
-    
+        print(i.get("Title"), end="\n")
+
+        #for url, use i.get("Url")
+        #for writer, use i.get("Writer")
+        #for date, use i.get("On")
