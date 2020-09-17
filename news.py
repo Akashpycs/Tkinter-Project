@@ -9,7 +9,7 @@ class TechNews:
         try:
             url = requests.get(self._url)
             return url
-        except error as e:
+        except Exception as e:
             print("Error Occured :- ", e)
             return None
 
